@@ -4,16 +4,16 @@ public class User {
 
 
 
-        String names;
+        String name;
 
         int age;
 
-        public User(String names, int age){
-        this.names = names;
+        public User(String name, int age){
+        this.name = name;
         this.age = age;
         }
 
-        public String getNames() { return names; }
+        public String getNames() { return name; }
 
     public int getAge() { return age; }
 }
