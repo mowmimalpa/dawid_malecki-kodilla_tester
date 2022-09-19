@@ -6,7 +6,7 @@ public class RandomNumbers {
         int ilosc_liczb = 5000, i;
         double liczba, suma = 0, min, max;
         System.out.println("Program losuje " + ilosc_liczb + "liczb "
-                + "całkowitych od 0 do 99,");
+                + "całkowitych od 0 do 30,");
         System.out.println("a następnie znajduje najmniejszą i największą");
         Random r = new Random();
         min = Math.round(30 * (r.nextDouble()));
