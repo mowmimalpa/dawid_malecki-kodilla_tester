@@ -8,11 +8,6 @@ public class Book {
         this.title = title;
 
 
-        Book book = new Book("Issac Asimov","The Galaxy");
-        System.out.println(book.author + "" + book.title);
-
-
-
     }
 
     public static Book of(String author, String title) {
@@ -23,7 +18,7 @@ public class Book {
 
 
         Book book = Book.of("Issac Asimov","The Galaxy");
-        System.out.println(book);
+        System.out.println(Book.of(Book);
     }
 }
 
