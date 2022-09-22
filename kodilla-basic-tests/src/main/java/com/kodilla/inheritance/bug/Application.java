@@ -1,7 +1,7 @@
-package com.kodilla.inheritance.homework;
+package com.kodilla.inheritance.bug;
 
-import com.kodilla.inheritance.homework.Car;
-import com.kodilla.inheritance.homework.Convertible;
+
+
 
 public class Application {
 
@@ -11,6 +11,5 @@ public class Application {
 
         Convertible convertible = new Convertible(4, 2);
         convertible.turnOnLights();
-        System.out.println(Spec.getYear());
     }
 }

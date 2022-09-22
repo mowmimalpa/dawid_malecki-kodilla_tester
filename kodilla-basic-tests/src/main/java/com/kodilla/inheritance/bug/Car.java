@@ -1,4 +1,6 @@
-package com.kodilla.inheritance.homework;
+package com.kodilla.inheritance.bug;
+
+
 
 public class Car {
     private int wheels;

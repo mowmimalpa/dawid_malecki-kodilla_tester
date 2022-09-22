@@ -1,6 +1,6 @@
-package com.kodilla.inheritance.homework;
+package com.kodilla.inheritance.bug;
 
-import com.kodilla.inheritance.homework.Car;
+
 
 public class Convertible extends Car {
 
