@@ -34,9 +34,6 @@ public class OperatingSystem {
 
 
         public void displayProduct() {
-            System.out.println("Product" + ram);
+            System.out.println("Product:"+ version);
         }
 }
-// nie miałem możliwości stworzenia gradle build
-// nie miałem możliwości stworzenia nowego package com.kodilla.inheritance.homework
-

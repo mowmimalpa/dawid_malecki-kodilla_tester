@@ -5,6 +5,7 @@ public class Spec extends OperatingSystem {
     public Spec(int year,int ram,int version) {
         super(year,version,ram);
         System.out.println("System operation production:"+ year);
+        System.out.println("Ram:"+ram);
 
     }
     @Override
