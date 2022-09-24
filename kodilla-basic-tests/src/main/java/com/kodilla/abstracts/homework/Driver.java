@@ -9,6 +9,6 @@ public class Driver extends Job {
 
     @Override
     public void test(){
-        System.out.println(this.firstName + ":" +this.responsibilities);
+        System.out.println();
     }
 }

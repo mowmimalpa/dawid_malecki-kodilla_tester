@@ -7,6 +7,7 @@ public  abstract class Job {
     String responsibilities;
     String job;
 
+
     public Job(String name,int salary,int age,String job,String responsibilities){
         this.firstName = name;
         this.salary = salary;
@@ -52,7 +53,6 @@ public  abstract class Job {
         this.job = job;
     }
     public abstract void test();
-
 
 
 

@@ -7,8 +7,9 @@ public class Butcher extends Job {
         super(name,salary,age,job,responsibilities);
     }
 
+
     @Override
     public void test(){
-        System.out.println(this.firstName + ":" +this.responsibilities);
+        System.out.println();
     }
 }
