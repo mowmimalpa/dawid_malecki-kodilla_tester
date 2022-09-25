@@ -1,28 +1,28 @@
 package com.kodilla.abstracts.homework;
 
 public  abstract class Job {
-    String firstName;
+    //String firstName;
     int salary;
-    int age;
+    //int age;
     String responsibilities;
-    String job;
+    //String job;
 
 
-    public Job(String name,int salary,int age,String job,String responsibilities){
-        this.firstName = name;
+    public Job(int salary,String responsibilities){
+       // this.firstName = name;
         this.salary = salary;
         this.responsibilities = responsibilities;
-        this.age = age;
-        this.job = job;
+        //this.age = age;
+        //this.job = job;
 
     }
-    public String getName(){
-        return firstName;
-    }
-    public void setName(String name){
-        this.firstName = name;
+    //public String getName(){
+        //return firstName;
 
-    }
+    //public void setName(String name){
+        //this.firstName = name;
+
+
     public int getSalary(){
         return salary;
 
@@ -38,20 +38,20 @@ public  abstract class Job {
         this.salary = salary;
 
     }
-    public int getAge(){
-        return age;
+    //public int getAge(){
+        //return age;
 
-    }
-    public void setAge(int age){
-        this.age= age;
-    }
-    public String getJob(){
-        return job;
 
-    }
-    public void setJob(String name) {
-        this.job = job;
-    }
+    //public void setAge(int age){
+    //this.age= age;
+
+    //public String getJob(){
+        //return job;
+
+
+    //public void setJob(String name) {
+       // this.job = job;
+
     public abstract void test();
 
 

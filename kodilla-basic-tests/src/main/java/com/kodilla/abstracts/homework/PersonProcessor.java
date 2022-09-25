@@ -6,7 +6,7 @@ public class PersonProcessor {
 
 
     public void process(Job job) {
-        System.out.println(job.getResponsibilities()+ ":" +job.getJob()+"" + "  Imię:" + job.getName());
+        System.out.println(job.getResponsibilities());
         job.test();
     }
 }
