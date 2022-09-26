@@ -16,9 +16,9 @@ public class Person {
 
 
 
-        Driver myDriver = new Driver(2222,"Kreci kierownicą");
+        Driver myDriver = new Driver();
 
-        Butcher myButcher = new Butcher(3333,"Kroi");
+        Butcher myButcher = new Butcher();
      myDriver.test();
 
 

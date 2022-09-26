@@ -3,7 +3,7 @@ package com.kodilla.abstracts.homework;
 import com.kodilla.abstracts.homework.Job;
 
 public class Butcher extends Job {
-    public Butcher(int salary,String responsibilities){
+    public Butcher(){
         super(2222,"Kroi mięso");
     }
 
