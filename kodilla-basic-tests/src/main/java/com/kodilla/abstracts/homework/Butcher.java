@@ -10,15 +10,16 @@ public class Butcher extends Job {
     String butcherFirstName = "Piotr";
 
 
-    Job job = new Butcher();
+   // Job job = new Butcher();
     //Job job1 = new Driver();
     public Butcher(){
         super(2222,"Kroi mięso");
     }
 
 
+
     @Override
     public void test(){
-        System.out.println("wiek"+ageButcher+":Imię:"+butcherFirstName+":"+" "+showResponsibilities()+job);
+        System.out.println("wiek"+ageButcher+":Imię:"+butcherFirstName+":"+" "+showResponsibilities());
     }
 }
