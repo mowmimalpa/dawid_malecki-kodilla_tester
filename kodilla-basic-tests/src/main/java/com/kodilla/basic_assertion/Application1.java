@@ -7,12 +7,7 @@ public class Application1 {
         return expected == actual;
     }
 
-    public static boolean assertEquals1(int expected, int actual) {
-        return expected == actual;
-    }
 
-    public static boolean assertEquals2(double expected, double actual, double delta) {
-        return expected == actual;}
 
 }
 
