@@ -2,7 +2,6 @@ package com.kodilla.basic_assertion;
 
 import org.junit.jupiter.api.Test;
 
-import static com.kodilla.basic_assertion.Application1.assertEquals2;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTestSuite {
@@ -58,6 +57,7 @@ public class CalculatorTestSuite {
 
     @Test
     void testDelta() {
+        Calculator calculator = new Calculator();
         double expected = 23.0;
         double actual = 250.0;
         double delta = 0.0;
