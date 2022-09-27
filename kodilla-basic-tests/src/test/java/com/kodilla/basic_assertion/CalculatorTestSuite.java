@@ -57,11 +57,11 @@ public class CalculatorTestSuite {
     }
 
     @Test
-    public void testDelta() {
-        Calculator calculator = new Calculator();
-        double a = 5.0;
-        double b = 8.0;
-        double c = 9.0;
-        assertEquals2(11.4, 5.8, 11.4);
+    void testDelta() {
+        double expected = 23.0;
+        double actual = 250.0;
+        double delta = 0.0;
+        assertEquals(expected, actual, delta);
+
     }
 }
