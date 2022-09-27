@@ -10,9 +10,6 @@ public class Person {
         Driver driver = new Driver();
         driver.test();
 
-        PersonProcessor processor = new PersonProcessor();
-        processor.process(butcher);
-
         
 
 

@@ -1,7 +1,5 @@
 package com.kodilla.abstracts.homework;
 
-import com.kodilla.abstracts.homework.Job;
-
 public class Butcher extends Job {
 
    // int ageDriver = 32;
@@ -10,8 +8,10 @@ public class Butcher extends Job {
    // String Driver = "Kierowca";
     //String driverFirstName = "Andrzej";
     String butcherFirstName = "Piotr";
+
+
     Job job = new Butcher();
-    Job job1 = new Driver();
+    //Job job1 = new Driver();
     public Butcher(){
         super(2222,"Kroi mięso");
     }
@@ -19,6 +19,6 @@ public class Butcher extends Job {
 
     @Override
     public void test(){
-        System.out.println("wiek"+ageButcher+":Imię:"+butcherFirstName+":"+" "+showResponsibilities());
+        System.out.println("wiek"+ageButcher+":Imię:"+butcherFirstName+":"+" "+showResponsibilities()+job);
     }
 }
