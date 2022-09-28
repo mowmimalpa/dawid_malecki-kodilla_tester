@@ -1,5 +1,4 @@
 rootProject.name = 'kodilla-course'
 include 'kodilla-basic-tests'
-include 'kodilla-basic-testss'
-include 'kodilla-basic-tests'
+
 

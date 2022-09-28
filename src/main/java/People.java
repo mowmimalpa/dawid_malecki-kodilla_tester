@@ -10,32 +10,41 @@ class People
         this.age = age;
         this.height = height;
     }
-    public String getName() {
-        return name;
+
+
+
+
+
+    public boolean validateName() {
+        if(this.name != null){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean validateAge() {
+        if(this.age >30 ) {
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
 
 
+    public boolean validateHeight() {
+        if(this.height >160) {
+            return true;
+        }else{
+            return false;
+        }
 
-    public void validateName(String name) {
-        this.name = name;
     }
 
-    public double validateAge() {
-        return age;
-    }
 
-    public void validateAge(double age) {
-        this.age = age;
-    }
 
-    public double validateHeight() {
-        return height;
-    }
-
-    public void validateHeight(double height) {
-        this.height = height;
-    }
 
 
 

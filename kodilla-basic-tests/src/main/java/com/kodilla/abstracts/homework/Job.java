@@ -16,9 +16,7 @@ public  abstract class Job {
         //this.job = job;
 
     }
-    public String showResponsibilities(){
-        return responsibilities;
-    }
+
     //public String getName(){
         //return firstName;
 
@@ -55,7 +53,7 @@ public  abstract class Job {
     //public void setJob(String name) {
        // this.job = job;
 
-    public abstract void test();
+    public abstract String test();
 
 
 
