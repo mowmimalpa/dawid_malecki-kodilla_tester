@@ -15,7 +15,7 @@ public class CashMachine {
 
 
 
-    public CashMachine (String name,int balance) {
+    public CashMachine () {
         this.name = name;
         this.transactions = new int[0];
         this.size = 0;
@@ -25,36 +25,47 @@ public class CashMachine {
         public void addTransaction(int value) {
             this.size++;
             int[] newTransactions = new int[this.size];
-            System.arraycopy(transactions,0,newTransactions,0,transactions.length);
-            newTransactions[this.size-1] = value;
+            System.arraycopy(transactions, 0, newTransactions, 0, transactions.length);
+            newTransactions[this.size - 1] = value;
             this.transactions = newTransactions;
-            System.out.println("Bilans środków"+this.name+" "+ this.balance);
-            if (value >0) {
+            System.out.println("Bilans środków" + this.name + " " + this.balance);
+            if (value > 0) {
                 this.deposit++;
                 balance += value;
                 System.out.println("Wpłacono środki" + value);
-            } else if(value <0){
-                if (balance <value*-1) {
+            } else if (value < 0) {
+                if (balance < value * -1) {
                     System.out.println("Brak środków w bankomacie");
                 } else {
                     this.recall++;
                     balance += value;
-                    System.out.println("Wypłacono"+ value*-1 + "z konta");
+                    System.out.println("Wypłacono" + value * -1 + "z konta");
 
                 }
-                System.out.println("Bilans środków"+name + " "+ balance);
-                System.out.println("Laczna ilość operacji:"+this.size);
+                System.out.println("Bilans środków" + name + " " + balance);
+                System.out.println("Laczna ilość operacji:" + this.size);
 
 
+            }
+        }
 
 
-
+    public double getAverage() {
+        if (this.transactions.length == 0) {
+            return 0;
+        }
+        double sum = 0;
+        for(int i = 0; i < this.transactions.length; i++) {
+            sum += this.transactions[i];
+        }
+        return sum/this.transactions.length;
+    }
 
 
             }
 
 
-        }
+
 
 
 // private int[] values;
