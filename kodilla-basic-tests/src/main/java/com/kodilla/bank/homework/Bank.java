@@ -19,7 +19,7 @@ public class Bank {
         }
 
 
-
+// Czy to poniżej dobrze?
         public void addPkoPayment(int money) {
                 if (money > 0) {
                         this.pko.addTransaction(money);
