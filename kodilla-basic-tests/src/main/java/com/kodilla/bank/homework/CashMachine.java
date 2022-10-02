@@ -4,15 +4,13 @@ public class CashMachine {
 
     int [] transactions;
    public int balance;
-    int size;
-    int deposit;
-    int recall;
+    public int size;
+    public int deposit;
+    public static int recall;
 
-    int depositSum;
+    public int depositSum;
 
-    int recallSum;
-
-
+    public int recallSum;
 
 
 
@@ -20,7 +18,9 @@ public class CashMachine {
 
 
 
-    public CashMachine (int value) {
+
+
+    public CashMachine () {
         this.transactions = new int[0];
         this.size = 0;
         this.balance = balance;
@@ -77,28 +77,28 @@ public class CashMachine {
             }
         }
 
-        return recallSum;
-    }
-    public int[] getTransactions() {
-
-        return transactions;
-    }
-    public int getBalance() {
-        return balance;
-    }
-    public int getSize() {
-
-        return size;
-    }
-    public int getDeposit() {
-
-        return deposit;
-    }
-    public int getRecall() {
-
-        return recall;
-    }
-}
+//        return recallSum+this.transactions.length;
+//    }
+//    public int[] getTransactions() {
+//
+//        return transactions;
+//    }
+//    public int getBalance() {
+//        return balance;
+//    }
+//    public int getSize() {
+//
+//        return size;
+//    }
+//    public int getDeposit() {
+//
+//        return deposit;
+//    }
+//    public int getRecall() {
+//
+//        return recall;
+//    }
+//}
 
 
 
