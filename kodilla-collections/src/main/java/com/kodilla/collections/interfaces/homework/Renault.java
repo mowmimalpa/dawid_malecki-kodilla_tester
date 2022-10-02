@@ -20,13 +20,14 @@ public class Renault implements Car{
     }
     public void increaseSpeed() {
 
-        speed=acceleration;
+        speed=acceleration++*2;
     }
 
     public void decreaseSpeed() {
 
-        speed=brakes;
+        speed -= acceleration;
     }
+
 
 
 

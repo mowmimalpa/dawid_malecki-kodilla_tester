@@ -2,12 +2,15 @@ package com.kodilla.bank.homework;
 
 public class CashMachine {
 
-    int balance;
+    int [] transactions;
+   public int balance;
     int size;
     int deposit;
     int recall;
-    String name;
-    int [] transactions;
+
+    int depositSum;
+
+    int recallSum;
 
 
 
@@ -15,54 +18,88 @@ public class CashMachine {
 
 
 
-    public CashMachine () {
-        this.name = name;
+
+
+    public CashMachine (int value) {
         this.transactions = new int[0];
         this.size = 0;
         this.balance = balance;
     }
 
-        public void addTransaction(int value) {
+
+    public void addTransaction(int value) {
+        if (value == 0) {
+            return;
+        } else {
             this.size++;
             int[] newTransactions = new int[this.size];
             System.arraycopy(transactions, 0, newTransactions, 0, transactions.length);
             newTransactions[this.size - 1] = value;
             this.transactions = newTransactions;
-            System.out.println("Bilans środków" + this.name + " " + this.balance);
+            System.out.println("Bilans środków " + this.getBalance());
             if (value > 0) {
                 this.deposit++;
                 balance += value;
-                System.out.println("Wpłacono środki" + value);
+                System.out.println("Wpłacono " + value);
             } else if (value < 0) {
                 if (balance < value * -1) {
                     System.out.println("Brak środków w bankomacie");
                 } else {
                     this.recall++;
                     balance += value;
-                    System.out.println("Wypłacono" + value * -1 + "z konta");
-
+                    System.out.println("Wypłacono " + value * -1);
                 }
-                System.out.println("Bilans środków" + name + " " + balance);
-                System.out.println("Laczna ilość operacji:" + this.size);
-
+            } else {
+                System.out.println("Nie zmieniono stanu konta.");
 
             }
+            System.out.println("Saldo " + this.getBalance());
+            System.out.println("Lącznie wpłat: " + this.getDeposit());
+            System.out.println("Bilans środków:"+" " + this.getRecall());
+            System.out.println("Laczna ilość operacji: " + this.getSize());
         }
-
-
-    public double getAverage() {
-        if (this.transactions.length == 0) {
-            return 0;
+    }
+    public int getDepositSum() {
+        depositSum = 0;
+        for(int i = 0; i < transactions.length; i++) {
+            if(transactions[i] > 0) {
+                depositSum += transactions[i];
+            }
         }
-        double sum = 0;
-        for(int i = 0; i < this.transactions.length; i++) {
-            sum += this.transactions[i];
-        }
-        return sum/this.transactions.length;
+        return depositSum;
     }
 
-
+    public int getRecallSum() {
+        recallSum = 0;
+        for(int i = 0; i < transactions.length; i++) {
+            if(transactions[i] < 0) {
+                recallSum += transactions[i];
             }
+        }
+
+        return recallSum;
+    }
+    public int[] getTransactions() {
+
+        return transactions;
+    }
+    public int getBalance() {
+        return balance;
+    }
+    public int getSize() {
+
+        return size;
+    }
+    public int getDeposit() {
+
+        return deposit;
+    }
+    public int getRecall() {
+
+        return recall;
+    }
+}
+
 
 
 
@@ -98,3 +135,16 @@ public class CashMachine {
 //    public int[] getValues() {
 //        return values;
 //    }
+
+
+
+// Dodaj metody zwracające saldo bankomatu
+// oraz liczbę wykonanych transakcji. Utwórz klasę Bank,
+// która będzie zawierać tablicę bankomatów.
+// Bank powinien mieć metody zwracające:
+//
+//całkowity bilans ze wszystkich bankomatów,
+//liczbę transakcji związanych z wypłatą,
+//liczbę transakcji związaną z wpłatą pieniędzy,
+//średnią wartość wypłaty,
+//średnią wartość wpłat
