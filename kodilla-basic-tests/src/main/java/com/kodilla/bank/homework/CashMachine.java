@@ -2,8 +2,8 @@ package com.kodilla.bank.homework;
 
 public class CashMachine {
 
-    int [] transactions;
-   public int balance;
+    int[] transactions;
+    public int balance;
     public int size;
     public int deposit;
     public static int recall;
@@ -13,14 +13,7 @@ public class CashMachine {
     public int recallSum;
 
 
-
-
-
-
-
-
-
-    public CashMachine () {
+    public CashMachine() {
         this.transactions = new int[0];
         this.size = 0;
         this.balance = balance;
@@ -55,50 +48,84 @@ public class CashMachine {
             }
             System.out.println("Saldo " + this.getBalance());
             System.out.println("Lącznie wpłat: " + this.getDeposit());
-            System.out.println("Bilans środków:"+" " + this.getRecall());
+            System.out.println("Bilans środków:" + " " + this.getRecall());
             System.out.println("Laczna ilość operacji: " + this.getSize());
         }
     }
+
     public int getDepositSum() {
         depositSum = 0;
-        for(int i = 0; i < transactions.length; i++) {
-            if(transactions[i] > 0) {
+        for (int i = 0; i < transactions.length; i++) {
+            if (transactions[i] > 0) {
                 depositSum += transactions[i];
             }
         }
-        return depositSum;
+        return depositSum + this.transactions.length;
     }
 
     public int getRecallSum() {
         recallSum = 0;
-        for(int i = 0; i < transactions.length; i++) {
-            if(transactions[i] < 0) {
+        for (int i = 0; i < transactions.length; i++) {
+            if (transactions[i] < 0) {
                 recallSum += transactions[i];
             }
         }
 
-//        return recallSum+this.transactions.length;
-//    }
-//    public int[] getTransactions() {
-//
-//        return transactions;
-//    }
-//    public int getBalance() {
-//        return balance;
-//    }
-//    public int getSize() {
-//
-//        return size;
-//    }
-//    public int getDeposit() {
-//
-//        return deposit;
-//    }
-//    public int getRecall() {
-//
-//        return recall;
-//    }
-//}
+        return recallSum + this.transactions.length;
+    }
+
+    public int[] getTransactions() {
+
+
+        return transactions;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public int getSize() {
+
+        return size;
+    }
+
+    public int getDeposit() {
+
+
+        return deposit;
+    }
+
+    public int getRecall() {
+
+        return recall;
+    }
+
+
+    public double getAverageOfRecall() {
+        if (this.recallSum == 0) {
+            return 0;
+        }
+        double sum = 0;
+        for (int i = 0; i < this.recallSum; i++) {
+            sum += this.recallSum;
+        }
+        return sum / this.recallSum;
+    }
+
+    public double getAverageOfDeposit() {
+        if (this.depositSum == 0) {
+            return 0;
+        }
+        double sum = 0;
+        for (int i = 0; i < this.depositSum; i++) {
+            sum += this.depositSum;
+        }
+        return sum / this.depositSum;
+    }
+        public int allBalance(){
+        return recallSum + this.transactions.length + depositSum + this.transactions.length;
+        }
+}
 
 
 
