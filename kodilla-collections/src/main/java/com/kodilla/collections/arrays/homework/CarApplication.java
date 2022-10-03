@@ -25,8 +25,7 @@ public class CarApplication {
         Random random = new Random();
             int drawnCarKind = random.nextInt(15);
             //rand speed
-        double start = 50;
-        double end = 90;
+
             double a = random.nextDouble() * 15 + 1;
 
             //rand acceleration
