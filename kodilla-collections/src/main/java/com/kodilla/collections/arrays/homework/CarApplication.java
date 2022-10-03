@@ -12,7 +12,7 @@ public class CarApplication {
 
     public static void main(String[] args) {
         Random random = new Random();
-        Car[] cars = new Car[random.nextInt(15)+5];
+        Car[] cars = new Car[random.nextInt(15) + 1];
         for (int n = 0; n < cars.length; n++) {
             cars[n] = drawCar();
             cars[n].increaseSpeed();
@@ -21,24 +21,31 @@ public class CarApplication {
             CarUtils.describeCar(car);
     }
 
-    static Car drawCar() {
+    private static Car drawCar() {
         Random random = new Random();
-        int drawnCarKind = random.nextInt(5);
-        double a = random.nextDouble() * 21 + 8;
-        double b = random.nextDouble() * 34 + 5;
-        double c = random.nextDouble() * 22 + 4;
+            int drawnCarKind = random.nextInt(15);
+            //rand speed
+        double start = 50;
+        double end = 90;
+            double a = random.nextDouble() * 15 + 1;
 
-        if (drawnCarKind == 0) { //a,b,c
-            return new Ford(10,20,30);
+            //rand acceleration
+            double b = random.nextDouble() * 15 + 1;
+            //rand brakes
+            double c = random.nextDouble() * 15 + 1;
+
+
+            if (drawnCarKind == 0) {
+                return new Ford(a, b, c);
+            } else if (drawnCarKind == 1) {
+                return new Opel(a, b, c);
+            } else {
+                return new Renault(a, b, c);
+            }
         }
-        else if (drawnCarKind == 1) {
-            return new Opel(30,20,10);
-        }
-        else {
-            return new Renault(20,10,30);
-        }
-    }
+
 
 
 
 }
+

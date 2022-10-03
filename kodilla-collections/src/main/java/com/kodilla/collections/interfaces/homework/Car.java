@@ -6,7 +6,7 @@ public interface Car {
     //Interfejs Car reprezentujący samochód z metodami:
     //pobranie aktualnej prędkości samochodu –
 
-    int getSpeed();
+    double getSpeed();
 
     //zwiększenie prędkości
 
@@ -17,5 +17,5 @@ public interface Car {
     void decreaseSpeed();
 
     // przyspieszenie
-    int getAcceleration();
+    double getAcceleration();
 }

@@ -1,24 +1,22 @@
 package com.kodilla.collections.interfaces.homework;
 
-import java.util.Objects;
-
 public class Ford implements Car{
 
-    int speed;
-    private int acceleration;
-    private int brakes;
+    double speed;
+    private double acceleration;
+    private double brakes;
 
-    public Ford(int speed, int acceleration, int brakes) {
+    public Ford(double speed, double acceleration, double brakes) {
         this.speed = speed;
         this.acceleration = acceleration;
         this.brakes = brakes;
     }
-    public int getSpeed() {
+    public double getSpeed() {
 
         return speed;
     }
 
-    public int getAcceleration() {
+    public double getAcceleration() {
         return acceleration;
     }
     public void increaseSpeed() {

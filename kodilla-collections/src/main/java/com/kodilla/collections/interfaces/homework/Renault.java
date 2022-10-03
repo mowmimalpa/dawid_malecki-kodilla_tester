@@ -1,21 +1,21 @@
 package com.kodilla.collections.interfaces.homework;
 
 public class Renault implements Car{
-    int speed;
-    private int acceleration;
-    private int brakes;
+    double speed;
+    private double acceleration;
+    private double brakes;
 
-    public Renault(int speed, int acceleration, int brakes) {
+    public Renault(double speed, double acceleration, double brakes) {
         this.speed = speed;
         this.acceleration = acceleration;
         this.brakes = brakes;
     }
-    public int getSpeed() {
+    public double getSpeed() {
 
         return speed;
     }
 
-    public int getAcceleration() {
+    public double getAcceleration() {
         return acceleration;
     }
     public void increaseSpeed() {
