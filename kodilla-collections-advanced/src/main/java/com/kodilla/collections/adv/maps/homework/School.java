@@ -5,7 +5,7 @@ import java.util.List;
 
 public class School {
     private String schoolName;
-    private List<Integer> students;
+    private List<Integer> students; // klasa osłonowa integer - int
 
     public School(String schoolName, int... students) {
         this.schoolName = schoolName;
@@ -28,3 +28,4 @@ public class School {
         return schoolName;
     }
 }
+//
