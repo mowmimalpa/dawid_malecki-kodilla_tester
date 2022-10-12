@@ -28,4 +28,3 @@ public class School {
         return schoolName;
     }
 }
-//
