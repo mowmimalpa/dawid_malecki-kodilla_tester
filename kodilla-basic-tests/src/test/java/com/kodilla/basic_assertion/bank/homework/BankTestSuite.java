@@ -53,7 +53,7 @@ public class BankTestSuite {
         AtmTwo.addTransaction(-50);
         theBank.addMachine(AtmThree);
         AtmThree.addTransaction(20);
-        assertEquals(60, theBank.totalBalance());
+        assertEquals(10, theBank.totalBalance());
     }
 
     @Test

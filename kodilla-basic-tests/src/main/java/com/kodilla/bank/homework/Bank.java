@@ -21,6 +21,8 @@ public class Bank {
 
 
         public Bank() {
+                this.size =0;
+                this.cashMachines = new CashMachine[0];
 //                this.cash = new int[0];
 //                this.size = 0;
 //                this.values = new CashMachine();
@@ -37,7 +39,10 @@ public class Bank {
                 CashMachine[] newTab = new CashMachine[this.size];
                 System.arraycopy(cashMachines, 0, newTab, 0, cashMachines.length);
                 newTab[this.size - 1] = cashMachine;
-                cashMachines = newTab;
+                this.cashMachines = newTab;
+        }
+        public CashMachine[] getCashMachine(){
+                return cashMachines;
         }
 
         public int totalBalance() {   /// całość wpłat
