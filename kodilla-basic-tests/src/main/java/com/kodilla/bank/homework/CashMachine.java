@@ -34,6 +34,39 @@ public class CashMachine {
         return transactions;
     }
 
+    public int bankTransactions(){
+        int bankTransactions = 0;
+        for(int i = 0; i < transactions.length;i++){
+            if (transactions[i]> 0) {
+                bankTransactions++;
+
+            }
+        } return bankTransactions;
+    }
+
+    public int getSize(){
+        return this.size;
+    }
+
+    public int bankTransactionsRecall(){
+        int bankTransactionsRecall = 0;
+        for (int i = 0; i < transactions.length;i++){
+            if (transactions[i]< 0){
+                bankTransactionsRecall++;
+            }
+        } return bankTransactionsRecall;
+    }
+
+    public int accBalance(){
+        int sum = 0;
+        for(int i =0; i < transactions.length; i++) {
+            sum += this.transactions[i]+getRecall()+getBalance();
+        }
+            return sum;
+        }
+
+
+
     public int getBalance() {
         int sum = 0;
         for (int i = 0; i < transactions.length; i++) {
@@ -61,7 +94,7 @@ public class CashMachine {
         for (int i = 0; i < this.getRecall(); i++) {
             sum += this.getRecall();
         }
-        return sum;
+        return sum/this.getRecall();
     }
 
     public double getAverageOfDeposit() {
@@ -72,7 +105,7 @@ public class CashMachine {
         for (int i = 0; i < this.getBalance(); i++) {
             sum += this.getBalance();
         }
-        return sum;
+        return sum/this.getBalance();
     }
 }
 

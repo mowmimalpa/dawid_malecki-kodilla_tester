@@ -8,11 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CashMachineTestSuite {
 
 
-    CashMachine atm = new CashMachine(100000);
+    CashMachine atm = new CashMachine();
+
 
 
     @Test
-    public void calculatingHaveZeroLength() {
+    public void ShouldAddHaveZeroLength() {
         int[] transactions = atm.getTransactions();
         assertEquals(0, transactions.length);
     }
@@ -29,70 +30,79 @@ public class CashMachineTestSuite {
     }
 
     @Test
-    public void calculatingPositiveValue() {
+    public void shouldAddPositiveValue() {
         atm.addTransaction(500);
-        assertEquals(1, atm.getDeposit());
+        assertEquals(1, atm.bankTransactions());
     }
 
 
     @Test
-    public void calculatingRecallNegativeValue() {
+    public void ShouldAddRecallNegativeValue() {
         atm.addTransaction(-600);
-        assertEquals(1, atm.getRecall());
+        assertEquals(1, atm.bankTransactionsRecall());
     }
 
 
     @Test
-    public void calculatingBalancePositiveValue() {
+    public void ShouldAddBalancePositiveValue() {
         atm.addTransaction(400);
-        assertEquals(100400, atm.getBalance());
+        assertEquals(400, atm.getBalance());
     }
 
 
     @Test
-    public void calculatingSubtractionFromBalanceNegativeValue() {
+    public void ShouldAddSubtractionFromBalanceNegativeValue() {
         atm.addTransaction(-200);
-        assertEquals(90800, atm.getBalance());
+        assertEquals(-200, atm.getBalance());
     }
 
 
     @Test
-    public void calculatingSumDeposit() {
+    public void ShouldAddSumDeposit() {
         atm.addTransaction(500);
         atm.addTransaction(200);
         atm.addTransaction(400);
-        atm.getDepositSum();
-        assertEquals(1100, atm.getDepositSum());
+
+        assertEquals(1100, atm.getBalance());
     }
 
 
     @Test
-    public void calculatingNotAddRecallToDeposit() {
-        atm.addTransaction(214);
-        atm.addTransaction(-55);
+    public void ShouldNotAddRecallToDeposit() {
+        atm.addTransaction(200);
+        atm.addTransaction(-50);
         atm.addTransaction(10);
-        atm.getDepositSum();
-        assertEquals(855, atm.getDepositSum());
+
+        assertEquals(160,atm.getBalance());
     }
 
 
     @Test
-    public void calculatingAddRecallToDeposit() {
+    public void ShouldAddRecallToDeposit() {
         atm.addTransaction(-500);
         atm.addTransaction(100);
         atm.addTransaction(400);
-        atm.getDepositSum();
-        assertEquals(-700, atm.getRecallSum());
+        assertEquals(0, atm.getBalance());
     }
 
 
     @Test
-    public void calculatingSumWithRecall() {
+    public void ShouldAddSumWithRecall() {
         atm.addTransaction(-300);
         atm.addTransaction(-200);
         atm.addTransaction(-100);
-        atm.getRecallSum();
-        assertEquals(-600, atm.getRecallSum());
+        assertEquals(-600, atm.getRecall());
+
+    }
+
+    @Test
+    public void ShouldAddNumberOfTransaction(){
+        atm.addTransaction(100);
+        atm.addTransaction(200);
+        atm.addTransaction(-100);
+        atm.addTransaction(-200);
+        assertEquals(2,atm.bankTransactions());
+        assertEquals(2,atm.bankTransactionsRecall());
 
     }
 }

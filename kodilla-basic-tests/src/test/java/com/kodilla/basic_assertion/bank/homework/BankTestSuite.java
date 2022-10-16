@@ -4,157 +4,111 @@ import com.kodilla.bank.homework.Bank;
 import com.kodilla.bank.homework.CashMachine;
 import org.junit.jupiter.api.Test;
 
-import static com.kodilla.basic_assertion.Application1.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BankTestSuite {
     Bank theBank = new Bank();
-    CashMachine AtmOne = new CashMachine(1000);
-    CashMachine AtmTwo = new CashMachine(2000);
-    CashMachine AtmThree = new CashMachine(3000);
+    CashMachine AtmOne = new CashMachine();
+    CashMachine AtmTwo = new CashMachine();
+    CashMachine AtmThree = new CashMachine();
 
     @Test
     public void calculatingHaveZeroLength() {
-        theBank.getNumberOfAtm();
-        assertEquals(0, theBank.getNumberOfAtm());
+        theBank.addMachine(AtmOne);
+        theBank.addMachine(AtmTwo);
+        AtmOne.addTransaction(100);
+        AtmTwo.addTransaction(200);
+        assertEquals(300, theBank.totalBalance());
     }
+
+//
+//    @Test
+//    public void ShouldAddMachine() {
+//        theBank.addMachine(AtmOne);
+//        theBank.getNumberOfAtm();
+//        assertEquals(1, theBank.getNumberOfAtm());
+//        assertEquals(1000, AtmOne.balance);
+//        theBank.addMachine(AtmTwo);
+//        theBank.getNumberOfAtm();
+//        assertEquals(4, theBank.getNumberOfAtm());
+//        assertEquals(3000, AtmTwo.balance);
+//    }
 
 
     @Test
-    public void calculatingAddMachine() {
+    public void ShouldAddTotalBalance() {
         theBank.addMachine(AtmOne);
-        theBank.getNumberOfAtm();
-        assertEquals(1, theBank.getNumberOfAtm());
-        assertEquals(1000, AtmOne.balance);
         theBank.addMachine(AtmTwo);
-        theBank.getNumberOfAtm();
-        assertEquals(4, theBank.getNumberOfAtm());
-        assertEquals(3000, AtmTwo.balance);
-    }
-
-
-    @Test
-    public void calculatingTotalBalance() {
-        theBank.addMachine(AtmOne);
-        AtmOne.getBalance();
-        theBank.addMachine(AtmTwo);
-        AtmTwo.getBalance();
         theBank.addMachine(AtmThree);
-        AtmThree.getBalance();
-        assertEquals(5000, theBank.totalBalance);
+        assertEquals(0, theBank.totalBalance());
     }
 
 
     @Test
-    public void calculatingTotalDeposits() {
+    public void ShouldAddTotalDeposits() {
         theBank.addMachine(AtmOne);
-        AtmOne.addTransaction(25);
-        AtmOne.getDeposit();
+        AtmOne.addTransaction(20);
+        AtmOne.addTransaction(20);
         theBank.addMachine(AtmTwo);
-        AtmTwo.addTransaction(150);
-        AtmTwo.getDeposit();
+        AtmTwo.addTransaction(-50);
         theBank.addMachine(AtmThree);
-        AtmThree.addTransaction(5000);
-        AtmThree.getDeposit();
-        theBank.totalDeposits();
-        assertEquals(3, theBank.totalDeposits());
+        AtmThree.addTransaction(20);
+        assertEquals(60, theBank.totalBalance());
     }
 
     @Test
-    public void calculatingTotalRecall() {
+    public void ShouldAddTotalRecall() {
         theBank.addMachine(AtmOne);
-        AtmOne.addTransaction(-120);
-        AtmOne.getRecall();
-        theBank.addMachine(AtmTwo);
-        AtmTwo.addTransaction(-460);
-        AtmTwo.getRecall();
-        theBank.addMachine(AtmThree);
-        AtmThree.addTransaction(-1);
-        AtmThree.getRecall();
-        theBank.totalRecall();
-        assertEquals(4, theBank.totalRecall());
-    }
-
-
-    @Test
-    public void calculatingZeroDeposits() {
-        theBank.addMachine(AtmOne);
-        AtmOne.getDeposit();
-        theBank.addMachine(AtmTwo);
-        AtmTwo.getDeposit();
-        assertEquals(0, theBank.totalDeposits());
-    }
-
-
-    @Test
-    public void calculatingAverageDepositWithZero() {
-        theBank.addMachine(AtmOne);
-        theBank.addMachine(AtmTwo);
-        AtmOne.getDeposit();
-        AtmOne.getDepositSum();
-        AtmTwo.getDeposit();
-        AtmTwo.getDepositSum();
-        theBank.totalDeposits();
-        theBank.totalDepositAverage();
-        assertEquals(0, (int) theBank.totalDepositAverage());
-    }
-
-
-    @Test
-    public void calculatingAverageRecall() {
-        theBank.addMachine(AtmOne);
-        theBank.addMachine(AtmTwo);
         AtmOne.addTransaction(-100);
-        AtmOne.addTransaction(-200);
         AtmOne.getRecall();
-        AtmOne.getRecallSum();
-        AtmTwo.addTransaction(-1);
-        AtmTwo.addTransaction(-4);
+        theBank.addMachine(AtmTwo);
+        AtmTwo.addTransaction(-200);
         AtmTwo.getRecall();
-        AtmTwo.getRecallSum();
-        theBank.totalRecall();
-        theBank.totalRecallAverage();
-        assertEquals(-305, (int) theBank.totalRecallAverage());
+        theBank.addMachine(AtmThree);
+        AtmThree.addTransaction(-120);
+        AtmThree.getRecall();
+        assertEquals(-420, theBank.totalRecalls());
     }
 
 
     @Test
-    public void calculatingAverageZeroWithRecall() {
+    public void ShouldNotCountTotalZeroDeposits() {
         theBank.addMachine(AtmOne);
+        AtmOne.addTransaction(0);
+        AtmOne.addTransaction(0);
         theBank.addMachine(AtmTwo);
-        AtmOne.getRecall();
-        AtmOne.getRecallSum();
-        AtmTwo.getRecall();
-        AtmTwo.getRecallSum();
-        theBank.totalRecall();
-        theBank.totalRecallAverage();
-        assertEquals(0, (int) theBank.totalRecallAverage());
-    }
+        AtmTwo.addTransaction(0);
+        AtmTwo.addTransaction(0);
 
-
-    @Test
-    public void calculatingTotalZeroRecall() { //
-        theBank.addMachine(AtmOne);
-        AtmOne.getRecall();
-        theBank.addMachine(AtmTwo);
-        AtmTwo.getRecall();
-        assertEquals(0, theBank.totalRecall());
+        assertEquals(0, theBank.accBalance());
     }
 
     @Test
-    public void calculatingDepositAverage() {
+    public void shouldCountRecallAverage(){ // wypłaty
         theBank.addMachine(AtmOne);
+        AtmOne.addTransaction(-400);
+    AtmOne.addTransaction(-200);
         theBank.addMachine(AtmTwo);
-        AtmOne.addTransaction(600);
-        AtmOne.addTransaction(250);
-        AtmOne.getDeposit();
-        AtmOne.getDepositSum();
-        AtmTwo.addTransaction(20);
-        AtmTwo.addTransaction(40);
-        AtmTwo.getDeposit();
-        AtmTwo.getDepositSum();
-        theBank.totalDeposits();
-        theBank.totalDepositAverage();
-        assertEquals(200, (int) theBank.totalDepositAverage());
+    AtmTwo.addTransaction(-100);
+    AtmTwo.addTransaction(-100);
+    assertEquals(-200,theBank.averageOfRecall());
+
+
+
+    }
+
+    @Test
+    public void shouldCountBalanceAverage(){ // wpłaty
+        theBank.addMachine(AtmOne);
+        AtmOne.addTransaction(400);
+        AtmOne.addTransaction(200);
+        theBank.addMachine(AtmThree);
+        AtmThree.addTransaction(100);
+        AtmThree.addTransaction(100);
+        assertEquals(200, theBank.averageOfBalance());
+
 
     }
 }
+
+

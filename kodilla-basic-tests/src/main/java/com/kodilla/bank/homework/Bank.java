@@ -40,7 +40,7 @@ public class Bank {
                 cashMachines = newTab;
         }
 
-        public int totalBalance() {
+        public int totalBalance() {   /// całość wpłat
                 int totalBalance = 0;
                 for (int i = 0; i < cashMachines.length; i++) {
                         totalBalance += cashMachines[i].getBalance();
@@ -49,7 +49,7 @@ public class Bank {
 
         }
 
-        public int totalRecalls() {
+        public int totalRecalls() {  /// całość wypłat
                 int totalRecalls = 0;
                 for (int i = 0; i < cashMachines.length; i++) {
                         totalRecalls += cashMachines[i].getRecall();
@@ -57,23 +57,34 @@ public class Bank {
                 return totalRecalls;
         }
 
-        public int averageOfBalance() {
-                int averageOfBalance = 0;
+        public int averageOfBalance() { /// średnia wpłat
+                int totalBalance = totalBalance();
+                int numberOfInput = 0;
                 for (int i = 0; i < cashMachines.length; i++) {
-                        averageOfBalance += cashMachines[i].getAverageOfRecall();
+                        numberOfInput += cashMachines[i].bankTransactions();
                 }
-                return averageOfBalance;
+                return totalBalance/numberOfInput;
         }
 
 
-        public int averageOfRecall() {
-                int averageOfRecall = 0;
+        public int averageOfRecall() { /// średnia wypłat
+                int totalRecall = totalRecalls();
+                int numberOfInput1 = 0;
                 for (int i = 0; i < cashMachines.length; i++) {
-                        averageOfRecall += cashMachines[i].getAverageOfRecall();
+                        numberOfInput1 += cashMachines[i].bankTransactionsRecall();
 
                 }
-                return averageOfRecall;
+                return totalRecall/numberOfInput1;
         }
 
+        public int accBalance() { /// cały bilans
+                int accBalance = 0;
+                for (int i = 0; i < cashMachines.length; i++) {
+                        accBalance += cashMachines[i].accBalance();
+                }
+                        return accBalance;
+                }
 
-}
+
+        }
+
