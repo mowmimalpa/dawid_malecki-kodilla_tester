@@ -13,6 +13,8 @@ public class UsersManagerTest {
 @Test
     public void ShouldCorrectReturnUsername(){
 
+    //given
+
             UsersRepository.getUsersList();
 
     List<User> expectedUsers = new ArrayList<>();
@@ -22,9 +24,14 @@ public class UsersManagerTest {
     expectedUsers.add(new User("Gus Fring", 49, 0, "Board"));
     expectedUsers.add(new User("Gale Boetticher", 44, 2, "Chemists"));
     expectedUsers.add(new User("Mike Ehrmantraut", 57, 0, "Security"));
-    assertEquals(expectedUsers,UsersRepository.getUsersList());
 
+//when ???
+
+
+    // then ???
 
 }
 
 }
+
+
