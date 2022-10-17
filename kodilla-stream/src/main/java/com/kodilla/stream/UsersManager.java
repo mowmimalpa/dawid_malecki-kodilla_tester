@@ -1,5 +1,6 @@
 package com.kodilla.stream;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 //Następnie w klasie UsersManager stwórz metodę statyczną wykorzystującą Stream,
@@ -22,7 +23,7 @@ public class UsersManager {
     private static List<String> filterDeclaredAgeUsernames() {
         List<String> usernames = UsersRepository.getUsersList()   // [1]
                 .stream()
-                .filter(user -> user.getAge()<50)
+                .filter(user -> user.getAge() < 50)
                 .map(UsersManager::getUserName)
                 .collect(Collectors.toList());                      // [2]
 
@@ -34,23 +35,28 @@ public class UsersManager {
     }
 
 
-    private boolean correct;
-    public boolean isCorrect() {
-        return correct;
-    }
-    public void declaredAge(int declaredAgeToWork){
-        if(correct) {
-            if (declaredAgeToWork <50) {
-                correct = true;
-            }else{
-                if (declaredAgeToWork >50){
-                    correct = false;
-                }
+//    private boolean correct;
+//
+//    public boolean isCorrect() {
+//        return correct;
+//    }
+
+    public static List<User> findDeclaredAge() {
+        List <User> declaredAgeToWork = new ArrayList<>();
+        for(User user : UsersRepository.getUsersList()) {
+            if(user.getAge()<50) {
+                declaredAgeToWork.add(user);
             }
         }
-
+        if(declaredAgeToWork.size() >50) {
+            System.out.println("Za młody do pracy;");
+        }
+        return declaredAgeToWork;
     }
 }
+
+
+
 
 
 

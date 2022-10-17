@@ -13,10 +13,7 @@ public class UsersManagerTest {
 @Test
     public void ShouldCorrectReturnUsername(){
 
-    //given
-
-            UsersRepository.getUsersList();
-
+    List<User> result = UsersManager.findDeclaredAge(50);
     List<User> expectedUsers = new ArrayList<>();
     expectedUsers.add(new User("Walter White", 50,7,"Chemists"));
     expectedUsers.add(new User("Jesse Pinkman", 25, 4648, "Sales"));
@@ -24,6 +21,7 @@ public class UsersManagerTest {
     expectedUsers.add(new User("Gus Fring", 49, 0, "Board"));
     expectedUsers.add(new User("Gale Boetticher", 44, 2, "Chemists"));
     expectedUsers.add(new User("Mike Ehrmantraut", 57, 0, "Security"));
+    assertEquals(expectedUsers,UsersManager.findDeclaredAge();
 
 //when ???
 
