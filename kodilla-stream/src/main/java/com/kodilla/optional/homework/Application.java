@@ -7,7 +7,7 @@ import java.util.Optional;
 public class Application {
 
 
-     private List<Student> students;
+    private List<Student> students;
 
 //     public Application() {
 //
@@ -25,17 +25,31 @@ public class Application {
 ////     }
 
 
-
     public static void main(String[] args) {
         List<Student> studentList = new ArrayList<>();
         studentList.add(new Student("Tony Hawk", new Teacher("Johnny Bravo")));
         studentList.add(new Student("Nikodem Dyzma", null));
         studentList.add(new Student("Filip Noga", new Teacher("Piotr Nowak")));
-        for (Student student : studentList) {
+
+    }
+        public static void showStudentsWithTeachers(List<Student>students){
+        for (Student student : students) {
             Optional<Teacher> optionalTeacher = Optional.ofNullable(student.getTeacher());
             String teacherName = optionalTeacher.orElse(new Teacher("<undefined>")).getName();
             System.out.println("Student: " + student.getName() + " , teacher:" + teacherName);
+        }
+    }
 
+
+    public static List<Student> showStudentsWithTeachersList(List<Student>students){
+        List<Student> newStudentsList = new ArrayList<>();
+        for(Student s: students) {
+            Optional<Teacher> optionalTeacher = Optional.ofNullable(s.getTeacher());
+            String teacher = optionalTeacher.orElse(new Teacher("<undefined>")).getName();
+            newStudentsList.add(new Student(s.getName(), new Teacher(teacher)));
+
+        }
+        return newStudentsList;
 
 
 //                System.out.println(teacherName);
@@ -45,8 +59,10 @@ public class Application {
         }
 
 
+
+
+
     }
-}
 
 
 
