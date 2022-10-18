@@ -41,21 +41,37 @@ public class UsersManager {
 //        return correct;
 //    }
 
+
     public static List<User> findDeclaredAge() {
-        List <User> declaredAgeToWork = new ArrayList<>();
-        for(User user : UsersRepository.getUsersList()) {
-            if(user.getAge()<50) {
+        List<User> declaredAgeToWork = new ArrayList<>();
+        for (User user : UsersRepository.getUsersList()) {
+            if (user.getAge() < 50) {
                 declaredAgeToWork.add(user);
             }
         }
-        if(declaredAgeToWork.size() >50) {
+        if (declaredAgeToWork.size() > 50) {
             System.out.println("Za młody do pracy;");
         }
         return declaredAgeToWork;
     }
+
+    public static List<User> filterUsersOlderThan(int age) {
+        List<User> users = UsersRepository.getUsersList()
+                .stream()
+                .filter(user -> user.getAge() >= age)
+                .collect(Collectors.toList());
+        return users;
+    }
+
+    public static List<String> filterChemistGroupUsernames() {
+        List<String> usernames =UsersRepository.getUsersList()
+                .stream()
+                .filter(user ->user.getGroup().equals("Chemists"))
+                .map(UsersManager::getUserName)
+                .collect(Collectors.toList());
+        return usernames;
+    }
 }
-
-
 
 
 

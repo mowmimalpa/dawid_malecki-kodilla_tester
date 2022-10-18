@@ -7,26 +7,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UsersManagerTest {
 
 @Test
-    public void ShouldCorrectReturnUsername(){
-
-    List<User> result = UsersManager.findDeclaredAge();
+    public void shouldCorrectValueOfMembersAfterFilter(){
+    // given
     List<User> expectedUsers = new ArrayList<>();
     expectedUsers.add(new User("Walter White", 50,7,"Chemists"));
-    expectedUsers.add(new User("Jesse Pinkman", 25, 4648, "Sales"));
-    expectedUsers.add(new User("Tuco Salamanca", 34, 116, "Manager"));
-    expectedUsers.add(new User("Gus Fring", 49, 0, "Board"));
     expectedUsers.add(new User("Gale Boetticher", 44, 2, "Chemists"));
-    expectedUsers.add(new User("Mike Ehrmantraut", 57, 0, "Security"));
-    assertEquals(expectedUsers,UsersManager.findDeclaredAge());
-
-//when ???
 
 
-    // then ???
+    // when
+    List <String> result = UsersManager.filterChemistGroupUsernames();
+
+    // then
+    assertEquals(expectedUsers.size(),result.size());
+
+
+
+}
+
+@Test
+    public void shouldReturnListOfUsersOlderAndEqualFifty(){
+    // given
+    int expectedAge = 50;
+
+    // wgen
+    List<User> result = UsersManager.filterUsersOlderThan(expectedAge);
+    int value = result.size();
+
+    //then
+
+    for (User user: result){
+        int age = user.getAge();
+        assertTrue(age >= expectedAge);
+    }
 
 }
 
