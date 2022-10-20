@@ -49,7 +49,7 @@ class ApplicationTest {
     }
 
         @Test
-        public void ShouldTeacherHasNullCanBeConverted(){
+        public void ShouldTeacherHasNullCanBeConverted() {
 
             // given
 
@@ -60,16 +60,48 @@ class ApplicationTest {
 
 
             // when
-        List<Student> newList =(Application.showStudentsWithTeachersList(studentList));
+            List<Student> newList = (Application.showStudentsWithTeachersList(studentList));
 
-        // then
-            for (Student s : newList){
-                Assertions.assertEquals(expectedTeacher,s.getTeacher().getName());
+            // then
+            for (Student s : newList) {
+                Assertions.assertEquals(expectedTeacher, s.getTeacher().getName());
             }
+        }
+
+
+            @Test
+            public void ShouldTeacherHasName(){
+
+                // given
+                Teacher teacher = new Teacher("Jan Kowalski");
+                Student student = new Student ("Piotr Nowak",teacher);
+
+                // when
+                String teacher1 = (Application.showNullTeacher(student ));
+
+                // then
+                Assertions.assertEquals("Jan Kowalski", teacher1);
+
+
+
+            }
+
+            @Test
+    public void ShouldTeacherHasNoName(){
+
+        // given
+                Student student = new Student("Piotr Nowak",null);
+
+                // when
+                String student2 = (Application.showNullTeacher(student));
+
+                //then
+
+                Assertions.assertEquals("<undefined>",student2);
+
+    }
 
 
     }
 
 
-
-}

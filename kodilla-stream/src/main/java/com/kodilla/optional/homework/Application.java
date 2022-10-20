@@ -43,9 +43,10 @@ public class Application {
 
     public static List<Student> showStudentsWithTeachersList(List<Student>students){
         List<Student> newStudentsList = new ArrayList<>();
-        for(Student s: students) {
-            Optional<Teacher> optionalTeacher = Optional.ofNullable(s.getTeacher());
-            String teacher = optionalTeacher.orElse(new Teacher("<undefined>")).getName();
+        for(Student s: students) { // pojedynczy student s
+            String teacher = showNullTeacher(s);
+
+
             newStudentsList.add(new Student(s.getName(), new Teacher(teacher)));
 
         }
@@ -57,12 +58,29 @@ public class Application {
 //            }
 //            System.out.println("Brak nauczyciela");
         }
-
-
-
-
-
+        public static String showNullTeacher(Student student) {
+            Optional<Teacher> optionalTeacher = Optional.ofNullable(student.getTeacher());
+            String teacher = optionalTeacher.orElse(new Teacher("<undefined>")).getName();
+            return teacher;
     }
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+///Aby poprawnie przetestować, spróbuj utworzyć metodę,
+// która przyjmie obiekt Student i zwróci name z obiektu Teacher    }
 
 
 

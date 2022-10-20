@@ -18,7 +18,6 @@ public class ForumStats {
                 .mapToInt(n -> n.getNumberOfPost())
                 .average()
                 .orElse(0.0);
-        //.getAsDouble();
         return average;
     }
 
@@ -29,8 +28,6 @@ public class ForumStats {
                 .mapToInt(n -> n.getNumberOfPost())
                 .average()
                 .orElse(0.0);
-        //.orElseGet(() -> 0.0);
-        //.getAsDouble();
         return average;
     }
 }
