@@ -26,7 +26,7 @@ class WarehouseTest {
     }
 
     @Test
-    public void shouldOrderDoesntExceptionTheOrderDoesNotExist(){
+    public void shouldOrderDoesntExceptionTheOrderDoesNotExist() throws Exception{
         //given
         warehouse.addOrder(new Order("132"));
         warehouse.addOrder(new Order("150"));
