@@ -6,8 +6,7 @@ import java.util.Scanner;
 
 public class WarehouseApp {
     public static void main (String[]args){
-        List<Order> orders = new ArrayList<>();
-        Warehouse warehouse = new Warehouse(orders);
+        Warehouse warehouse = new Warehouse();
         warehouse.addOrder(new Order("987654"));
         warehouse.addOrder(new Order("321321"));
        warehouse.addOrder(new Order ("123456"));

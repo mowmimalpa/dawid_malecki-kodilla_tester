@@ -8,29 +8,28 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class WarehouseTest {
-    static List<Order> orders = new ArrayList<>();
-    static Warehouse warehouse = new Warehouse(orders);
+    private Warehouse warehouse = new Warehouse();
 
 
     @Test
-    void shouldOrderExistInList() throws Exception {
+    public void shouldOrderExistInList() throws Exception {
         //given
-        Order order = new Order("132");
-        warehouse.addOrder(order);
+        warehouse.addOrder(new Order("132"));
+        warehouse.addOrder(new Order("123"));
 
         //when
         Order result = warehouse.getOrder("132");
 
         //then
-        assertEquals(order, result);
+        assertEquals("132", result.getNumber());
 
     }
 
     @Test
-    void shouldOrderDoesntExceptionTheOrderDoesNotExist(){
+    public void shouldOrderDoesntExceptionTheOrderDoesNotExist(){
         //given
-        Order order = new Order("132");
-        warehouse.addOrder(order);
+        warehouse.addOrder(new Order("132"));
+        warehouse.addOrder(new Order("150"));
 
         // then
         assertThrows(OrderDoesntExistException.class,()-> warehouse.getOrder("999"));

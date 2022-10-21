@@ -28,6 +28,8 @@ public class Order {
 
     @Override
     public String toString(){
-        return number;
+        return "Order{" +
+                "number='" + number + '\'' +
+                '}';
     }
 }
