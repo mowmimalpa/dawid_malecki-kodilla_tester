@@ -3,4 +3,7 @@ include 'kodilla-basic-tests'
 include 'kodilla-collections'
 include 'kodilla-collections-advanced'
 include 'kodilla-stream'
+include 'kodilla-advanced-tests'
+include 'kodilla-advanced-tests:src:main:com.kodilla.parametrized_tests.homework'
+findProject(':kodilla-advanced-tests:src:main:com.kodilla.parametrized_tests.homework')?.name = 'com.kodilla.parametrized_tests.homework'
 
