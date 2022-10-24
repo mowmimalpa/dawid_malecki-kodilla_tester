@@ -16,47 +16,30 @@ class GamblingMachineTest {
 
     GamblingMachine gamblingMachine = new GamblingMachine();
 
-    //wyjatek
-    @ParameterizedTest
-    @CsvFileSource(resources = "/numbersToFail.csv")
-    public void shouldThrownExceptionWithIncorrectNumbers(String numbers) {
-        String[] expectedArray = numbers.split(",");
-        Set<String> expectedSet = new HashSet<>(Arrays.asList(expectedArray));
-        List<Integer> numbersToCheck = expectedSet
-                .stream()
-                .map(u -> Integer.parseInt(u))
-                .collect(Collectors.toList());
-        Set<Integer> expectedParse = new HashSet<>(numbersToCheck);
-        Assertions.assertThrows(InvalidNumbersException.class, () -> gamblingMachine.validateNumbers(expectedParse));
-    }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/numbersToPass.csv")
-    public void shouldNotCountWithIncorrectNumbers(String numbers) throws InvalidNumbersException {
-        String[] expectedArray = numbers.split(",");
-        Set<String> expectedSet = new HashSet<>(Arrays.asList(expectedArray));
-        List<Integer> numbersToCheck = expectedSet
-                .stream()
-                .map(u -> Integer.parseInt(u))
-                .collect(Collectors.toList());
-        Set<Integer> expectedParse = new HashSet<>(numbersToCheck);
-        Assertions.assertThrows(InvalidNumbersException.class, () -> gamblingMachine.howManyWins(expectedParse));
+@CsvFileSource(resources = "/numbersToPass.csv")
+public void ifNumberOfWinsIsCorrect(String strings) throws InvalidNumbersException {
+        String[] numbers = strings.split("");
+        Set<Integer> setNumbers = new HashSet<>();
+        for (String number : numbers) {
+            setNumbers.add(Integer.parseInt(number));
+            int counted = gamblingMachine.howManyWins(setNumbers);
+            boolean result = counted > 0 && counted < 6;
+            Assertions.assertTrue(result);
 
+        }
     }
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/numbeersNotValid.csv")
-    public void shouldPassWithCorrectNumbers(String numbers) throws InvalidNumbersException {
-        String[] expectedArray = numbers.split(" ");
-        Set<String> expectedSet = new HashSet<>(Arrays.asList(expectedArray));
-        System.out.println(expectedSet);
-        List<Integer> numbersToValidate = expectedSet
-                .stream()
-                .map(u -> Integer.parseInt(u))
-                .collect(Collectors.toList());
-        Set<Integer> expected = new HashSet<>(numbersToValidate);
-        gamblingMachine.howManyWins(expected);
-        assertEquals(6,expected.size());
+        @ParameterizedTest
+        @CsvFileSource(resources = "/numbersToFail.csv")
+        public void shouldThrownExceptionWhenTheNumberOfUserIsOtherThanSix (String strings){
+            String[] numbers = strings.split("");
+            Set<Integer> userNumbers = new HashSet<>();
+            for (String number : numbers) {
+                userNumbers.add(Integer.parseInt(number));
+                Assertions.assertThrows(InvalidNumbersException.class, () -> gamblingMachine.howManyWins(userNumbers));
 
+            }
+        }
     }
-}
