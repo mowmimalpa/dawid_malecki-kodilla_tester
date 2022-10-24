@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class GamblingMachineTest {
 
     GamblingMachine gamblingMachine = new GamblingMachine();
@@ -38,22 +40,22 @@ class GamblingMachineTest {
                 .map(u -> Integer.parseInt(u))
                 .collect(Collectors.toList());
         Set<Integer> expectedParse = new HashSet<>(numbersToCheck);
-        Assertions.assertThrows(InvalidNumbersException.class, () -> gamblingMachine.howManyWins(expectedParse));
-
-    }
-
-    @ParameterizedTest
-    @CsvFileSource(resources = "/numbeersNotValid.csv")
-    public void shouldPassWithCorrectNumbers(String numbers) throws InvalidNumbersException {
-        String[] expectedArray = numbers.split(",");
-        Set<String> expectedSet = new HashSet<>(Arrays.asList(expectedArray));
-        List<Integer> numbersToCheck = expectedSet
-                .stream()
-                .map(u -> Integer.parseInt(u))
-                .collect(Collectors.toList());
-        Set<Integer> expectedParse = new HashSet<>(numbersToCheck);
-        Assertions.assertThrows(InvalidNumbersException.class, ()-> gamblingMachine.validateNumbers(expectedParse));
-
+        Assertions.assertDoesNotThrow(() -> gamblingMachine.howManyWins(expectedParse));
 
     }
 }
+//    @ParameterizedTest
+//    @CsvFileSource(resources = "/numbeersNotValid.csv")
+//    public void shouldPassWithCorrectNumbers(String numbers) throws InvalidNumbersException {
+//        String[] expectedArray = numbers.split(",");
+//        Set<String> expectedSet = new HashSet<>(Arrays.asList(expectedArray));
+//        List<Integer> numbersToValidate = expectedSet
+//                .stream()
+//                .map(u -> Integer.parseInt(u))
+//                .collect(Collectors.toList());
+//        Set<Integer> expectedParsed = new HashSet<>(numbersToValidate);
+//        boolean result = gamblingMachine.howManyWins(expectedParsed) <= 6;
+//        Assertions.assertTrue(result);
+//
+//    }
+//}
