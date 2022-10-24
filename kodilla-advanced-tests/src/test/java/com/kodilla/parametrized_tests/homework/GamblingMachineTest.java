@@ -24,11 +24,12 @@ public void ifNumberOfWinsIsCorrect(String strings) throws InvalidNumbersExcepti
         Set<Integer> setNumbers = new HashSet<>();
         for (String number : numbers) {
             setNumbers.add(Integer.parseInt(number));
-            int counted = gamblingMachine.howManyWins(setNumbers);
-            boolean result = counted > 0 && counted < 6;
-            Assertions.assertTrue(result);
-
         }
+        int counted = gamblingMachine.howManyWins(setNumbers);
+        boolean result = counted > 0 && counted <6;
+        if(counted <1);
+        assertTrue(result);
+
     }
 
         @ParameterizedTest
