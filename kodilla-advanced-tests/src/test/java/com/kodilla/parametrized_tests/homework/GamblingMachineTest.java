@@ -29,7 +29,7 @@ class GamblingMachineTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/numbersToFail.csv")
+    @CsvFileSource(resources = "/numbersToPass.csv")
     public void shouldNotCountWithIncorrectNumbers(String numbers) throws InvalidNumbersException {
         String[] expectedArray = numbers.split(",");
         Set<String> expectedSet = new HashSet<>(Arrays.asList(expectedArray));
@@ -43,7 +43,7 @@ class GamblingMachineTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/numbersToPass.csv")
+    @CsvFileSource(resources = "/numbeersNotValid.csv")
     public void shouldPassWithCorrectNumbers(String numbers) throws InvalidNumbersException {
         String[] expectedArray = numbers.split(",");
         Set<String> expectedSet = new HashSet<>(Arrays.asList(expectedArray));
@@ -52,6 +52,8 @@ class GamblingMachineTest {
                 .map(u -> Integer.parseInt(u))
                 .collect(Collectors.toList());
         Set<Integer> expectedParse = new HashSet<>(numbersToCheck);
+        Assertions.assertThrows(InvalidNumbersException.class, ()-> gamblingMachine.validateNumbers(expectedParse));
+
 
     }
 }
