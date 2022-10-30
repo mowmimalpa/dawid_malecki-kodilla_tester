@@ -63,12 +63,7 @@ public class WeatherAlertServiceTestSuite {
         Mockito.verify(subscriber1, Mockito.times(0)).receive(location2);
         Mockito.verify(subscriber1, Mockito.times(0)).receive(location1);
 
-
     }
-
-
-
-
 
 }
 

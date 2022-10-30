@@ -29,8 +29,6 @@ public class WeatherAlertService {
             }
         }
 
-
-
     }
     public void sendNotification(Location location) {
 
@@ -46,7 +44,6 @@ public class WeatherAlertService {
     }
 
     public void removeLocation(Location location) {
-//      this.locationList.remove(location);
         this.alertSystem.remove(location);
     }
 }
