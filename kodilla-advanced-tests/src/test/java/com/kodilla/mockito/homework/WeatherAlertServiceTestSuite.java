@@ -5,57 +5,69 @@ import org.mockito.Mockito;
 
 public class WeatherAlertServiceTestSuite {
     WeatherAlertService weatherAlertService = new WeatherAlertService();
+    NotificationAlert notificationAlert = Mockito.mock(NotificationAlert.class);
     Subscriber subscriber1 = Mockito.mock(Subscriber.class);
     Subscriber subscriber2 = Mockito.mock(Subscriber.class);
     Location location1 = Mockito.mock(Location.class);
     Location location2 = Mockito.mock(Location.class);
 
-    @Test
-    public void subscriberReceivesAlert() {
+    @Test//
+    public void  notificationCanBeSendToAllSubscribers() {
 
-        weatherAlertService.addSubscriberToLocation(subscriber1, location1);
-        weatherAlertService.addSubscriberToLocation(subscriber2, location2);
+        weatherAlertService.addSubscriber(subscriber1, location1);
+        weatherAlertService.addSubscriber(subscriber2, location2);
 
-        weatherAlertService.sendDailyAlert();
-        Mockito.verify(subscriber1, Mockito.times(1)).receiveAlert(location1);
-        Mockito.verify(subscriber2, Mockito.times(1)).receiveAlert(location2);
+        weatherAlertService.sendNotificationAlertToAllSubscribers(notificationAlert);
+        Mockito.verify(subscriber1, Mockito.times(1)).receiveNotificationAlert(notificationAlert);
+        Mockito.verify(subscriber2, Mockito.times(1)).receiveNotificationAlert(notificationAlert);
 
-    }
-    @Test
-    public void notSubscriberShouldNotReceiveNotificationsAndAlert(){
-        weatherAlertService.sendDailyAlert();
-        weatherAlertService.sendAlertToGroup();
-        Mockito.verify(subscriber1,Mockito.never()).receiveAlert(location1);
-        Mockito.verify(subscriber2,Mockito.never()).receiveNotification();
-
-    }
-    @Test
-    public void subscribersShouldReceiveNotifications(){
-        weatherAlertService.addSubscriberToLocation(subscriber1, location1);
-        weatherAlertService.addSubscriberToLocation(subscriber2, location2);
-
-        weatherAlertService.sendAlertToGroup();
-        Mockito.verify(subscriber1,Mockito.times(1)).receiveNotification();
-        Mockito.verify(subscriber2,Mockito.times(1)).receiveNotification();
-
-    }
-    @Test
-    public void subscriberShouldUnsubcribe(){
-        weatherAlertService.unsubscribeInLocation(subscriber1,location1);
-        weatherAlertService.unsubscribeInLocation(subscriber2,location2);
-        Mockito.verify(subscriber1,Mockito.times(1)).unsubscribeLocation(location1);
-        Mockito.verify(subscriber2,Mockito.times(1)).unsubscribeLocation(location2);
     }
 
     @Test
-    public void subscriberShouldSubscribeOnlyOneTime(){
-        weatherAlertService.addSubscriberToLocation(subscriber1, location1);
-        weatherAlertService.addSubscriberToLocation(subscriber2, location2);
-        Mockito.verify(subscriber1, Mockito.times(1)).subscribeToLocation(location1);
-        Mockito.verify(subscriber2, Mockito.times(1)).subscribeToLocation(location2);
+    public void subscribersShouldReceiveNotificationsFromHisLocation() {
+        weatherAlertService.addSubscriber(subscriber1, location1);
+        weatherAlertService.addSubscriber(subscriber2, location2);
+
+        weatherAlertService.sendNotification(location1);
+        weatherAlertService.sendNotification(location2);
+        Mockito.verify(subscriber1, Mockito.times(1)).receive(location1);
+        Mockito.verify(subscriber2, Mockito.times(1)).receive(location2)
+        ;
+
+    }
+
+    @Test
+    public void subscriberShouldUnsubcribe() {
+        weatherAlertService.addSubscriber(subscriber1, location1);
+        weatherAlertService.addSubscriber(subscriber2, location2);
+        weatherAlertService.removeLocation(location1);
+        weatherAlertService.removeLocation(location2);
+        Mockito.verify(subscriber1, Mockito.times(0)).receive(location1);
+        Mockito.verify(subscriber2, Mockito.times(0)).receive(location2);
+    }
+    @Test
+    public void unsubscribedShouldNotReceiveNotification(){
+        Location city1 = Mockito.mock(Location.class);
+        Subscriber client = Mockito.mock(Subscriber.class);
+        weatherAlertService.sendNotification(city1);
+        Mockito.verify(client, Mockito.never()).receive(city1);
+
+    }
+
+    @Test
+    public void shouldDeleteAllSubscription(){
+        weatherAlertService.addSubscriber(subscriber1, location1);
+        weatherAlertService.addSubscriber(subscriber1, location2);
+        weatherAlertService.removeSubscriber(subscriber1,location1);
+        weatherAlertService.removeSubscriber(subscriber1,location2);
+        Mockito.verify(subscriber1, Mockito.times(0)).receive(location2);
+        Mockito.verify(subscriber1, Mockito.times(0)).receive(location1);
 
 
     }
+
+
+
 
 
 }
