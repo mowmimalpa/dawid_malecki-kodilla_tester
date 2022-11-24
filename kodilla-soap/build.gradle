@@ -12,9 +12,6 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-    compile('javax.xml.bind:jaxb-api:2.3.0')
-    compile('javax.activation:activation:1.1')
-    compile('org.glassfish.jaxb:jaxb-runtime:2.3.0')
 }
 
 test {
