@@ -2,6 +2,7 @@ plugins {
     id 'java'
 }
 
+group 'org.example'
 version 'unspecified'
 
 repositories {
@@ -11,4 +12,8 @@ repositories {
 dependencies {
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     testImplementation group: 'junit', name: 'junit', version: '5.3'
+}
+
+test {
+    useJUnitPlatform()
 }
