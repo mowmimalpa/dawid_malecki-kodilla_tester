@@ -39,7 +39,8 @@ public class AllegroTestingApp {
         for (WebElement element : elementFound) {
             System.out.println(element.getText());
 
-            driver.close();
+
         }
+        driver.close();
     }
 }
