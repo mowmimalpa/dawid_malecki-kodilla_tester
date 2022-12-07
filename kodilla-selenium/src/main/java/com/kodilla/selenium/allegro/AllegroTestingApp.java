@@ -18,7 +18,7 @@ public class AllegroTestingApp {
         System.setProperty("webdriver.chrome.driver", "c:\\selenium-drivers\\chrome\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.ebay.com");
-
+        WebDriverWait wait = new WebDriverWait(driver, 10);
 
         WebElement category = driver.findElement(By.cssSelector("#gh-cat"));
         Select type = new Select(category);
@@ -27,6 +27,7 @@ public class AllegroTestingApp {
 
         WebElement itemName = driver.findElement(By.cssSelector("#gh-ac"));
         itemName.sendKeys("mini mavic");
+        Thread.sleep(2000);
 
         WebElement clickButton = driver.findElement(By.cssSelector("#gh-btn"));
         clickButton.click();
@@ -37,6 +38,8 @@ public class AllegroTestingApp {
         List<WebElement> elementFound = driver.findElements(By.cssSelector("#srp-river-results > ul > li"));
         for (WebElement element : elementFound) {
             System.out.println(element.getText());
+
+            driver.close();
         }
     }
 }
