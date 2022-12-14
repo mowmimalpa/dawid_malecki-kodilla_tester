@@ -12,4 +12,5 @@ include 'kodilla-soap'
 include 'kodilla-selenium'
 include 'kodilla-selenium'
 include 'kodilla-login-selenium'
+include 'kodilla-cucumber'
 

@@ -1,19 +1,24 @@
 plugins {
     id 'java'
+
 }
 
-group 'org.example'
-version 'unspecified'
+group 'com.kodilla'
+version '1.0-SNAPSHOT'
+
+
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+
 }
+
 
 dependencies {
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
-    testImplementation group: 'junit', name: 'junit', version: '5.3'
-}
+    implementation (group: 'com.github.lewka', name: 'ocular', version: '1.0.5'){
+        exclude group: "net.sf", module: "jargs"
+    }
 
-test {
-    useJUnitPlatform()
 }
