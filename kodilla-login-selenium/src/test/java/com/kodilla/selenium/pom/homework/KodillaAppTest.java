@@ -89,6 +89,13 @@ class KodillaAppTest{
         int laptop = find.size();
         assertEquals(0, laptop);
     }
+
+    @Test
+    public void BrandSearchWithDifferentSizeOfCharacters() throws InterruptedException {
+        String searchWord = "brAND";
+        searchPom.search(searchWord);
+        Thread.sleep(10000);
+    }
     @AfterEach
     public void closing() {
         searchPom.close();
