@@ -25,6 +25,7 @@ class KodillaAppTest{
 
     @BeforeEach
     public void setup() {
+        System.setProperty("webdriver.chrome.driver", "c:\\selenium-drivers\\chrome\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.navigate().to("https://kodilla.com/pl/test/store");
         searchPom = new KodillaStorePom (driver);
