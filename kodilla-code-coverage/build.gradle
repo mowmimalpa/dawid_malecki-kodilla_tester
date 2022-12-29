@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'checkstyle'
+    id "com.github.spotbugs" version "4.7.2"
+}
+
+group 'org.example'
+version 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+checkstyle {
+    toolVersion "8.30"
+    configFile = file("checkstyle.xml")
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.31'
+}
+spotbugs {
+    ignoreFailures = true
+}
+
+spotbugsMain {
+    reports {
+        html {
+            required = true
+        }
+    }
+}
+
+spotbugsTest {
+    reports {
+        html {
+            required = true
+        }
+    }
+}
+
+jacocoTestCoverageVerification { // pokrycie kodu
+    violationRules {
+        rule {
+            element = 'METHOD'
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 1.0
+            }
+            includes = [
+                    'com.kodilla.jacoco.*'
+            ]
+        }
+    }
+    test {
+        useJUnitPlatform()
+    }
+}

@@ -13,4 +13,5 @@ include 'kodilla-selenium'
 include 'kodilla-selenium'
 include 'kodilla-login-selenium'
 include 'kodilla-cucumber'
+include 'kodilla-code-coverage'
 
