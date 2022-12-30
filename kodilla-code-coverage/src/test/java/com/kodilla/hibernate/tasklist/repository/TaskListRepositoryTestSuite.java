@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class TaskListRepositoryTestSuite {
+ class TaskListRepositoryTestSuite {
     @Autowired
     private TaskListRepository taskListRepository;
 
@@ -18,7 +18,7 @@ public class TaskListRepositoryTestSuite {
     private static final String DESCRIPTION = "Tasks to be done this week";
 
     @Test
-    public void testFindByListName() {
+     void testFindByListName() {
         //Given
         TaskList taskList = new TaskList(LISTNAME, DESCRIPTION);
         taskListRepository.save(taskList);
