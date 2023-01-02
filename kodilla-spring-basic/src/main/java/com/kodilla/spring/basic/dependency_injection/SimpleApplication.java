@@ -8,10 +8,11 @@ public class SimpleApplication {
     }
 
 
-    public void processMessage(String message, String receiver) {
+    public String processMessage(String message, String receiver) {
         if (checkReceiver(receiver)) {
             this.messageService.send(message, receiver);
         }
+        return message;
     }
 
     private boolean checkReceiver(String receiver) {

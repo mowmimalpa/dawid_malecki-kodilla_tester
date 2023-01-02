@@ -1,5 +1,6 @@
 package com.kodilla.spring.basic.spring_dependency_injection;
 
+import com.kodilla.spring.basic.dependency_injection.FacebookMessageService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,25 @@ public class SimpleApplicationTestSuite {
         SimpleApplication bean = context.getBean(SimpleApplication.class);
         String message = bean.processMessage("Test", "Any receiver");
         Assertions.assertEquals("Sending [Test] to: Any receiver using Skype", message);
+    }
+
+    @Test
+    void shouldntProcessMessageWithEmptyField(){
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
+        SimpleApplication bean = context.getBean(SimpleApplication.class);
+        String message = bean.processMessage("Dzien dobry","");
+        Assertions.assertNull(message);
+
+    }
+
+
+    @Test
+    void shouldReturnFacebookMessage(){
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
+        FacebookMessageService bean = context.getBean(FacebookMessageService.class);
+        String message = bean.send("Facebook","Cukierberg");
+        Assertions.assertNotNull(message);
+
     }
 
 }

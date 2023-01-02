@@ -6,18 +6,18 @@ import java.util.Set;
 
 public class Warehouse {
 
-    private Set<Order> orders;
+    private static Set<Order> orders = new HashSet<>();
 
-    public Warehouse(){
-        orders = new HashSet<>();
-    }
-    public void addOrder(Order order){
+    public static Order addOrder(Order order) {
         orders.add(order);
+        return order;
     }
 
-    public Order getOrder(String number) throws Exception{
-        return orders.stream()
-                .filter(o -> o.getNumber().contains(number))
+
+    public static Order getOrder(String number) throws OrderDoesntExistException{
+        return orders
+                .stream()
+                .filter(o -> o.getNumber().equals(number))
                 .findFirst()
                 .orElseThrow(OrderDoesntExistException::new );
     }

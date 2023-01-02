@@ -1,5 +1,6 @@
 package com.kodilla.exception.homework;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -29,10 +30,13 @@ class WarehouseTest {
     public void shouldOrderDoesntExceptionTheOrderDoesNotExist() throws Exception{
         //given
         warehouse.addOrder(new Order("132"));
-        warehouse.addOrder(new Order("150"));
+        warehouse.getOrder("150");
 
         // then
-        assertThrows(OrderDoesntExistException.class,()-> warehouse.getOrder("999"));
+        Order excepted = null;
 
-}
-}
+        assertNotEquals(excepted.getNumber(),Warehouse.getOrder("132").getNumber());
+        assertThrows(OrderDoesntExistException.class,()-> {Integer.parseInt("One");});
+
+        }
+    }

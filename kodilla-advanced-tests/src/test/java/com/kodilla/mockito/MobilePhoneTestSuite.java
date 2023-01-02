@@ -19,4 +19,10 @@ public class MobilePhoneTestSuite {
         // zwróć true jako wynik działania tej metody".
         Assertions.assertTrue(myPhone.needsCharging());
     }
+
+    @Test
+    public void shouldCallLaunchApplication() {
+        myPhone.launchApplication("Mario");
+        Mockito.verify(myPhone).launchApplication("Mario");
+    }
 }

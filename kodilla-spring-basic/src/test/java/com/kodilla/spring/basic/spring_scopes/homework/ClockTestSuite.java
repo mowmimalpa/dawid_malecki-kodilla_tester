@@ -22,4 +22,12 @@ public class ClockTestSuite {
         Assertions.assertNotEquals(bean1,bean3) ;
     }
 
+    @Test
+    void shouldCreateBean(){
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic.spring_scopes");
+        Clock bean1 = context.getBean(Clock.class);
+        Assertions.assertNotNull(bean1);
+
+    }
+
 }

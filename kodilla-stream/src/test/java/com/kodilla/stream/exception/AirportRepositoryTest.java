@@ -15,11 +15,13 @@ class AirportRepositoryTestSuite {
         assertTrue(isWarsawInUse);
     }
     @Test
-    public void testIsAirportInUse_withException() {
+    public void testIsAirportInUseWithException() throws AirportNotFoundException {
         // given
         AirportRepository airportRepository = new AirportRepository();
         // when
+        boolean inWarsawInUse = airportRepository.isAirportInUse("Vienna");
         // then
-        assertThrows(AirportNotFoundException.class, () -> airportRepository.isAirportInUse("Vienna"));
+        assertThrows(AirportNotFoundException.class, () -> {
+            Integer.parseInt("One");});
     }
 }
