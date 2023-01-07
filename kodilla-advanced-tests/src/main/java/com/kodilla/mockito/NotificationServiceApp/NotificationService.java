@@ -1,11 +1,9 @@
-package com.kodilla.mockito;
+package com.kodilla.mockito.NotificationServiceApp;
 
-import com.kodilla.notification.Client;
-import com.kodilla.notification.Notification;
+import com.kodilla.mockito.NotificationServiceApp.notification.Client;
+import com.kodilla.mockito.NotificationServiceApp.notification.Notification;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class NotificationService {

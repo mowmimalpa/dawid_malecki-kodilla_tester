@@ -1,5 +1,6 @@
 package com.kodilla.mockito;
 
+import com.kodilla.mockito.NotificationServiceApp.MobilePhone;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
